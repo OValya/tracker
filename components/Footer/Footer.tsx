@@ -2,7 +2,8 @@ import styles from './Footer.module.css'
 const Footer = () => {
     return (
         <footer className={styles.footer}>
-            @by OValya
+            <p>Developed by OValya</p>
+            <p>2023</p>
         </footer>
     );
 };

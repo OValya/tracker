@@ -6,6 +6,7 @@ const Header = () => {
             <nav className={styles.navbar}>
                 <Link href={'/'}>Tracker</Link>
                 <Link href={'/about'}>About</Link>
+                <Link href={'/login'}>Sign in</Link>
                 {/*<Link href={'/track'}>Tracker</Link>*/}
             </nav>
         </header>
