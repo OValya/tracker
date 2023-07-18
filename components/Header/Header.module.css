@@ -1,0 +1,10 @@
+.header{
+  min-height: 50px;
+  background-color: #7d3920;
+  color: white;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+}

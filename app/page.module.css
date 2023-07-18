@@ -1,0 +1,42 @@
+.container{
+    width: 800px;
+    margin: 20px auto;
+}
+
+.containerWeekdays,
+.containerDays{
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.weekday,
+.day{
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    background-color: coral;
+    align-items: center;
+}
+
+.containerDays{
+
+}
+
+.containerDays:hover{
+
+}
+
+
+
+.day{
+    background-color: rgba(65, 63, 63, 0.87);
+    cursor: pointer;
+}
+
+.day:hover{
+    background-color: rgba(255, 127, 80, 0.61);
+}
+

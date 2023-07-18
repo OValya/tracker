@@ -1,9 +1,9 @@
-import styles from './Footer.module.scss'
+import styles from './Footer.module.css'
 const Footer = () => {
     return (
-        <div>
+        <footer className={styles.footer}>
             @by OValya
-        </div>
+        </footer>
     );
 };
 
