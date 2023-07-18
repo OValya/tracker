@@ -24,10 +24,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
         <div className={styles.containerWeekdays}>
-            {weekDays.map(day=><div className={styles.weekday}>{day}</div>)}
+            {weekDays.map((day, ind)=><div key={ind} className={styles.weekday}>{day}</div>)}
         </div>
         <div className={styles.containerDays}>
-            {days.map(day=><div className={styles.day}>{day}</div>)}
+            {days.map(day=><div key={day} className={styles.day}>{day}</div>)}
         </div>
     </div>
   )
