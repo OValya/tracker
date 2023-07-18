@@ -5,7 +5,7 @@ const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
 const calcPeriod = (d1:Date, d2:Date):number=>{
     const day = 1000*60*60*24;
-    return Math.ceil((d2 - d1)/day)+1;
+    return Math.ceil((d2.getTime() - d1.getTime())/day)+1;
 }
 
 const setDays = (per:number) => {
