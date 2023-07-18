@@ -5,6 +5,8 @@ const Header = () => {
         <div>
             <Link href={'/'}>Tracker</Link>
             <Link href={'/about'}>About</Link>
+            <Link href={'/track'}>Tracker</Link>
+
         </div>
     );
 };
