@@ -8,15 +8,26 @@ const calcPeriod = (d1:Date, d2:Date):number=>{
     return Math.ceil((d2.getTime() - d1.getTime())/day)+1;
 }
 
-const setDays = (per:number) => {
-    //todo: write function
-    return Array(per).fill(1)
+type DateType = {
+    id:number,
+    date:Date
 }
+
+const setDays = (per:number, start: Date):Array<DateType> => {
+    const days:Array<DateType> = [];
+    for (let i = 1; i < per; i++) {
+        const day = new Date(start.setDate(start.getDate()+1));
+        days.push({id:i, date:day})
+    }
+    return days
+}
+
+
 //todo: add control for input dates
-const dateStart = new Date(2023, 6, 17)
+const dateStart = new Date(2023, 6, 16) //todo: correct start date
 const dateFinish = new Date(2023, 7, 20)
 const period = calcPeriod(dateStart, dateFinish);
-const days = setDays(period);
+const days = setDays(period, dateStart);
 
 
 export default function Home() {
@@ -26,7 +37,7 @@ export default function Home() {
             {weekDays.map((day, ind)=><div key={ind} className={styles.weekday}>{day}</div>)}
         </div>
         <div className={styles.containerDays}>
-            {days.map(day=><div key={day} className={styles.day}>{day}</div>)}
+            {days.map(day=><div key={day.id} className={styles.day}>{day.date.getDate()}</div>)}
         </div>
     </div>
   )
