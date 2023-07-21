@@ -1,15 +1,7 @@
 .login{
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(70, 63, 60, 0.7);
-}
-
-.form{
-    height: 600px;
-    width: 600px;
-    border-radius: 10px;
-    display: flex;
-    background-color:#a87474;
-    flex-direction: column;
 }

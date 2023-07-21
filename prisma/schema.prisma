@@ -16,6 +16,6 @@ model User {
   id            String       @default(cuid()) @id
   name          String?       @unique
   color         String?
-  avatar        String
+  password      String
   @@map(name: "users")
 }

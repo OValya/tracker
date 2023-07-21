@@ -4,10 +4,18 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <nav className={styles.navbar}>
-                <Link href={'/'}>Tracker</Link>
-                <Link href={'/about'}>About</Link>
-                <Link href={'/login'}>Sign in</Link>
-                <Link href={'/activity'}>activity</Link>
+                <ul className={styles.container_links}>
+                    <li><Link href={'/'}>Tracker</Link></li>
+                    <li><Link href={'/about'}>About</Link></li>
+                </ul>
+
+                <ul className={styles.container_links}>
+                    <li><Link className={styles.login} href={'/login'}>Sign in</Link></li>
+                    <li><Link className={styles.signup} href={'/register'}>Sign up</Link></li>
+                </ul>
+
+
+
                 {/*<Link href={'/track'}>Tracker</Link>*/}
             </nav>
         </header>

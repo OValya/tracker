@@ -1,0 +1,29 @@
+.login{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(70, 63, 60, 0.7);
+}
+
+.form{
+    height: 400px;
+    width: 500px;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+    /*flex-direction: column;*/
+    padding: 30px 15px;
+    background-color: coral;
+}
+
+.controls{
+
+}
+
+.control{
+    display: block;
+    width: 100%;
+    margin: 10px 0px;
+    padding: 6px;
+    border-radius: 6px;
+}
