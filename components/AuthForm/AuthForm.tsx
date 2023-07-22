@@ -2,7 +2,7 @@ import styles from "@/components/AuthForm/AuthForm.module.css";
 import {FormEventHandler, useState} from "react";
 type Props = {
     login:boolean;
-    onsubmit: (name, password, color?) => void
+    onsubmit: (name:string, password:string, color:string) => void
 }
 export default function AuthForm({login, onsubmit}:Props){
     const [name, setName] = useState('');

@@ -2,7 +2,7 @@
 import styles from './page.module.css'
 import AuthForm from "@/components/AuthForm/AuthForm";
 import {useRouter} from "next/navigation";
-import {useState} from "react";
+import React, {FormEvent, FormEventHandler, useState} from "react";
 
 export default function Register(){
     const router = useRouter();
@@ -10,7 +10,7 @@ export default function Register(){
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [color, setColor] = useState('#000000')
-    const register =  async (e) =>{
+    const register =  async (e:FormEvent) =>{
         e.preventDefault()
         try {
             const body = { name, password, color };
