@@ -4,7 +4,7 @@ import AuthForm from "@/components/AuthForm/AuthForm";
 export default function Login(){
     return(
         <div className={styles.login}>
-            <AuthForm login={true}/>
+            {/*<AuthForm login={true} onsubmit={()}/>*/}
             {/*<form className={styles.form}>*/}
             {/*    <h2>Для начала, авторизируйтесь:</h2>*/}
             {/*    <input placeholder={'enter your name'}/>*/}
