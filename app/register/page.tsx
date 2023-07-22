@@ -1,17 +1,30 @@
 'use client'
 import styles from './page.module.css'
 import AuthForm from "@/components/AuthForm/AuthForm";
-import {useRouter} from "next/router";
+import {useRouter} from "next/navigation";
 import {useState} from "react";
 
 export default function Register(){
-    //const router = useRouter();
-    const [data, setData] = useState({name:'', password:'', color:''});
+    const router = useRouter();
+    //const [data, setData] = useState({name:'', password:'', color:''});
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [color, setColor] = useState('#000000')
-    const register =  (e) =>{
+    const register =  async (e) =>{
         e.preventDefault()
+        try {
+            const body = { name, password, color };
+            const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            console.log('res', res)
+            await router.push('/');
+
+        } catch (error) {
+            console.error(error);
+        }
 
 
         // let res = await fetch("/api/register", {
@@ -42,14 +55,14 @@ export default function Register(){
                            value={password}
                     />
 
-                    {/*{!login && <div>*/}
-                    {/*    <input type={'color'}*/}
-                    {/*           value={color}*/}
-                    {/*           name={'user_color'}*/}
-                    {/*           onChange={e=>setColor(e.target.value)}*/}
-                    {/*    />*/}
-                    {/*    <label htmlFor={'user_color'}>Выбери свой цвет</label>*/}
-                    {/*</div>}*/}
+                    <div>
+                        <input type={'color'}
+                               value={color}
+                               name={'user_color'}
+                               onChange={e=>setColor(e.target.value)}
+                        />
+                        <label htmlFor={'user_color'}>Выбери свой цвет</label>
+                    </div>
                 </div>
                <button >Зарегистрироваться</button>
             </form>
