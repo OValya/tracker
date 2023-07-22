@@ -12,10 +12,12 @@
 }
 .container{
     padding: 15px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: coral;
+    gap: 8px;
 }
 .title{
     flex-basis: 100%;
@@ -24,6 +26,7 @@
 }
 
 .card{
+    /*width: calc(100% / 3);*/
     padding: 5px;
     border-radius: 5px;
     background-color: cornsilk;
@@ -39,4 +42,10 @@
 .card:hover{
    box-shadow: 5px 5px 3px chocolate ;
     transition: all 0.3s;
+}
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: calc(100% / 3);
+    }
 }

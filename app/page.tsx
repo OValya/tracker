@@ -1,5 +1,7 @@
 import Image from 'next/image'
+'use client'
 import styles from './page.module.css'
+import {useRouter} from "next/navigation";
 
 const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
 
@@ -31,13 +33,18 @@ const days = setDays(period, dateStart);
 
 
 export default function Home() {
+    const router = useRouter()
+    const handleClickOnDay =  () => {
+        console.log('redirect')
+        router.push('/activity')
+    }
   return (
     <div className={styles.container}>
         <div className={styles.containerWeekdays}>
             {weekDays.map((day, ind)=><div key={ind} className={styles.weekday}>{day}</div>)}
         </div>
         <div className={styles.containerDays}>
-            {days.map(day=><div key={day.id} className={styles.day}>{day.date.getDate()}</div>)}
+            {days.map(day=><div key={day.id} className={styles.day} onPointerEnter={()=>router.push('/activity')} onClick={()=>router.push('/activity')}>{day.date.getDate()}</div>)}
         </div>
     </div>
   )
