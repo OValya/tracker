@@ -44,7 +44,7 @@ export default function Home() {
             {weekDays.map((day, ind)=><div key={ind} className={styles.weekday}>{day}</div>)}
         </div>
         <div className={styles.containerDays}>
-            {days.map(day=><div key={day.id} className={styles.day} onPointerEnter={()=>router.push('/activity')} onClick={()=>router.push('/activity')}>{day.date.getDate()}</div>)}
+            {days.map(day=><div key={day.id} className={styles.day}  onClick={()=>router.push('/activity')}>{day.date.getDate()}</div>)}
         </div>
     </div>
   )
