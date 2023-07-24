@@ -1,47 +1,36 @@
 import Image from 'next/image'
-'use client'
+
 import styles from './page.module.css'
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import {headers} from "next/headers";
 
-// const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
-//
-// const calcPeriod = (d1:Date, d2:Date):number=>{
-//     const day = 1000*60*60*24;
-//     return Math.ceil((d2.getTime() - d1.getTime())/day)+1;
-// }
-//
-// type DateType = {
-//     id:number,
-//     date:Date
-// }
-//
-// const setDays = (per:number, start: Date):Array<DateType> => {
-//     const days:Array<DateType> = [];
-//     for (let i = 1; i < per; i++) {
-//         const day = new Date(start.setDate(start.getDate()+1));
-//         days.push({id:i, date:day})
-//     }
-//     return days
-// }
-//
-//
-// //todo: add control for input dates
-// const dateStart = new Date(2023, 6, 16) //todo: correct start date
-// const dateFinish = new Date(2023, 7, 20)
-// const period = calcPeriod(dateStart, dateFinish);
-// const days = setDays(period, dateStart);
+type ChallengeType = {
+    id:number,
+    title: string
+}
 
+export default async function Home() {
+    const host = headers().get("host");
+    const protocol = process?.env.NODE_ENV==="development"?"http":"https"
+    let response = await fetch(`${protocol}://${host}/api/challenge`, { cache: "no-store" });
+    const {result} = await response.json();
 
-export default function Home() {
     return(
-        <div>
-            <ul>Выбери свой челендж
-            <li className={styles.item}>
-                <Link href={'/track/1'}>Summer Training Challenge 2023 </Link>
-            </li>
-            </ul>
-        </div>
+        <>
+            <p className={styles.title}>Выбери свой челендж</p>
+            <div className={styles.container}>
+                {result.map((challenge:ChallengeType) =>
+                        <Link key={challenge.id}
+                              className={styles.item}
+                              href={`/track/${challenge.id}`}
+                        >
+                            {challenge.title}
+                        </Link>
+                )}
+            </div>
+
+        </>
     )
   //   const router = useRouter()
   //   const handleClickOnDay =  () => {

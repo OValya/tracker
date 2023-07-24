@@ -8,7 +8,7 @@
 
 main{
 
-  background: url("../public/Training.svg") no-repeat 120% 100%/40% ;
+  background: url("../public/Skipping.svg") no-repeat -20% 100%/40% ;
   flex-grow: 1;
 }
 
@@ -38,6 +38,6 @@ a{
 
 @media only screen and (max-width: 600px) {
   main {
-    background: url("../public/Training.svg") no-repeat right bottom;
+    background: url("../public/Training.svg") no-repeat left bottom;
   }
 }

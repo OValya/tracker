@@ -9,8 +9,8 @@ import {ReactNode} from "react";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Challenge tracker',
-  description: 'tracker for your activities',
+  title: 'Challenge challenge',
+  description: 'challenge for your activities',
 }
 
 export default function RootLayout({children}: {

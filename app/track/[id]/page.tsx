@@ -41,11 +41,8 @@ type Props = {
 const Tracker = async ({params:{id}}:Props) => {
     const host = headers().get("host");
     const protocol = process?.env.NODE_ENV==="development"?"http":"https"
-    let response = await fetch(`${protocol}://${host}/api/tracker/${id}`, { cache: "no-store" });
+    let response = await fetch(`${protocol}://${host}/api/challenge/${id}`, { cache: "no-store" });
     const {result} = await response.json();
-
-
-
     return (
         <div className={styles.container}>
             <h3>Добро пожаловать в {result.title}</h3>
