@@ -1,0 +1,15 @@
+
+.day{
+    /*width: 50px;*/
+    /*height: 40px;*/
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    align-items: center;
+    background-color: rgba(65, 63, 63, 0.87);
+    cursor: pointer;
+}
+
+.day:hover{
+    background-color: rgba(255, 127, 80, 0.61);
+}

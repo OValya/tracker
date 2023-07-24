@@ -1,0 +1,33 @@
+.container{
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.containerWeekdays,
+.containerDays{
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.weekday{
+    /*width: 50px;*/
+    /*height: 40px;*/
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: coral;
+    align-items: center;
+}
+
+.containerDays{
+
+}
+
+.containerDays:hover{
+
+}
+
+
+

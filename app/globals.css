@@ -34,6 +34,8 @@ a{
   text-decoration: none;
 }
 
+
+
 @media only screen and (max-width: 600px) {
   main {
     background: url("../public/Training.svg") no-repeat right bottom;

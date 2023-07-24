@@ -34,13 +34,17 @@ const Activity = async () => {
     const {result}:{result:ActivityType[]} = await response.json();
     //console.log('acts', result)
 
+    const setActivity = () => {
+
+    }
+
     return (
         <div className={styles.page}>
 
             <div className={styles.container}>
                 <h3 className={styles.title}>Выбери активность</h3>
                 {result.map(activity =>
-                    <div key={activity.id} className={styles.card}>
+                    <div key={activity.id} className={styles.card} >
                         <Image  src={activity.img} alt={activity.name} width={50} height={40}/>
                     <p>{activity.name}</p>
                     </div>)
