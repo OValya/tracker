@@ -8,7 +8,8 @@ export async function POST(req: Request) {
         const res = new NextResponse(
             JSON.stringify({ message: "Successfully logged in", result: true })
         );
-        res.cookies.set('user_id', user.id.toString());
+        const key: string = 'user_id'
+        res.cookies.set(key, user.id.toString());
         return res;
     }
     return NextResponse.json({ message: "Failed to login", result: false });

@@ -12,7 +12,9 @@ export async function POST(req: Request) {
             },
         });
         console.log('result', result)
-        return NextResponse.json({ message: "Added account", result: true });
+        const res = NextResponse.json({ message: "Added account", result: result });
+        res.cookies.set('user_id', result.id.toString());
+        return res
     }
     catch (e) {
         return NextResponse.json({

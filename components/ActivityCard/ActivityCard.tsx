@@ -9,15 +9,29 @@ import runningGirl from '../../public/Running-amico.svg'
 type ActType = {
     id: string,
     img: string,
-    name: string
+    name: string,
+    idChallenge?:string,
+    onClick?:()=>void
 }
 
-export default function ActivityDay(activity:ActType){
+export default function ActivityCard(activity:ActType){
     const [isOpen, setIsOpen] = useState(false)
     const router=useRouter();
-    const addActivity = ()=>{
+    const addActivity = async () =>{
+
+        const idActivity = activity.id
+        const idChallenge = activity.idChallenge
+        const body = {idActivity, idChallenge}
+        const res = await fetch('/api/tracker', {
+            method:'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        })
+        console.log('res', res)
+
         setIsOpen(true)
-        console.log('modal', isOpen)
+
+       // console.log('modal', isOpen)
     }
 
     const closeModal = () =>{
@@ -31,7 +45,7 @@ export default function ActivityDay(activity:ActType){
                 <p>{activity.name}</p>
 
             </div>
-            <Modal isOpen={isOpen} className={styles.modal} overlayClassName={styles.overlay}>
+            <Modal ariaHideApp={false} isOpen={isOpen} className={styles.modal} overlayClassName={styles.overlay}>
                 <h2>WOW! Так держать!</h2>
                 <p>Твоя тренировка записана, можешь идти еще потренироваться</p>
                 <button onClick={closeModal}>Уже бегу!</button>
