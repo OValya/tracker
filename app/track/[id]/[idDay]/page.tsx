@@ -25,7 +25,10 @@ type TrackerType = {
 export default async function DayPage({params}: { params:{id:string, idDay:string} }){
     const host = headers().get("host");
     const protocol = process?.env.NODE_ENV==="development"?"http":"https"
-    let response = await fetch(`${protocol}://${host}/api/tracker`, { cache: "no-store" });
+    let response = await fetch(`${protocol}://${host}/api/tracker`, {
+        method: "GET",
+        body: JSON.stringify({date: params.idDay}),
+        cache: "no-store" });
     const {result} = await response.json();
 
     return(
@@ -36,11 +39,8 @@ export default async function DayPage({params}: { params:{id:string, idDay:strin
                     <div className={styles.row} key={res.id}>
                         <span>{res.user.name}</span> - <span>{res.activity.name}</span></div>)
                 }
-                {/*<div className={styles.row}><span>{'Ира'}</span> - <span>{'бег'}</span></div>*/}
-                {/*<div className={styles.row}><span>{'Света'}</span> - <span>{'упры'}</span></div>*/}
-                {/*<div className={styles.row}><span>{'ВАля'}</span> - <span>{'ходьба'}</span></div>*/}
-                {/*<div className={styles.row}><span>{'Алень'}</span> - <span>{'лестница'}</span></div>*/}
                 <Link className={styles.link} href={`/track/${params.id}/${params.idDay}/editDay`}>Добавить свою активность!</Link>
+                <Link href={`/track/${params.id}/${params.idDay}`} className={styles.link}/>
             </div>
         </div>
     )

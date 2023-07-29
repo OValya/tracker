@@ -10,7 +10,7 @@ type ChallengeType = {
 
 export async function GET(req:Request, {params}:{params:{id:string}}) {
     const id = +params.id;
-    console.log('api id', id)
+    //console.log('api id', id)
     const challenge:ChallengeType|null = await prisma.challenge.findUnique({where: {id},})
     return NextResponse.json({messge:'ok', result: challenge})
     // if (challenge) {

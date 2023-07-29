@@ -13,11 +13,13 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  name     String?   @unique
-  color    String?
-  password String
-  Tracker  Tracker[]
+  id        Int         @id @default(autoincrement())
+  email     String
+  name      String?     @unique
+  color     String?
+  password  String
+  Tracker   Tracker[]
+  Challenge Challenge[]
 
   @@map(name: "users")
 }
@@ -30,11 +32,13 @@ model Activity {
 }
 
 model Challenge {
-  id      Int       @id @default(autoincrement())
-  title   String
-  start   DateTime
-  finish  DateTime
-  Tracker Tracker[]
+  id        Int       @id @default(autoincrement())
+  title     String
+  start     DateTime
+  finish    DateTime
+  userId    Int
+  createdBy User      @relation(fields: [userId], references: [id])
+  Tracker   Tracker[]
 }
 
 model Tracker {
@@ -43,7 +47,7 @@ model Tracker {
   userId      Int
   activity    Activity  @relation(fields: [actId], references: [id])
   actId       Int
-  date        DateTime
+  date        Int
   challenge   Challenge @relation(fields: [challengeId], references: [id])
   challengeId Int
 }

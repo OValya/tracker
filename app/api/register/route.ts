@@ -2,13 +2,14 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 export async function POST(req: Request) {
-    const { name, password, color } = await req.json();
+    const { name, password, color, email } = await req.json();
     try {
         const result = await prisma.user.create({
             data: {
                 name,
                 password,
-                color
+                color,
+                email
             },
         });
         console.log('result', result)

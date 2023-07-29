@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 export async function POST(req: Request) {
     const { name, password } = await req.json();
     const user = await prisma.user.findUnique({where: {name, password},})
+    console.log('user', user)
     if (user) {
         const res = new NextResponse(
             JSON.stringify({ message: "Successfully logged in", result: true })

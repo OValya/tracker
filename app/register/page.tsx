@@ -13,28 +13,17 @@ export default function Register(){
     const register =  async (e:FormEvent) =>{
         e.preventDefault()
         try {
-            const body = { name, password, color };
+            const body = { name, password, color, email:'email@gmail.com' };
             const res = await fetch('/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
             });
-            console.log('res', res)
             await router.push('/');
 
         } catch (error) {
             console.error(error);
         }
-
-
-        // let res = await fetch("/api/register", {
-        //     method: "POST",
-        //     body: JSON.stringify({ name, password, color }),
-        // });
-        // const { result } = await res.json();
-        // if (result) {
-        //     await router.replace("/");
-        // }
     }
     return(
         <div className={styles.login}>

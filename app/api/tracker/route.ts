@@ -5,8 +5,9 @@ import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
 
 
 export async function GET(req:Request){
+    const {date} = await req.json()
     const tracker = await prisma.tracker.findMany({where: {
-            date: '2023-07-21T00:00:00.000Z'
+            date: date
         },
         include:{
             user:true,

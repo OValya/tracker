@@ -14,13 +14,20 @@ export default async function Home() {
     const host = headers().get("host");
     const protocol = process?.env.NODE_ENV==="development"?"http":"https"
     let response = await fetch(`${protocol}://${host}/api/challenge`, { cache: "no-store" });
+    //if(!response)
+   // console.log('response', response)
     const {result} = await response.json();
+   // console.log('result', result)
+
+    // const createChallenge = () => {
+    //     const newChallenge =
+    // }
 
     return(
         <>
-            <p className={styles.title}>Выбери свой челендж</p>
+            <h3 className={styles.title}>Выбери свой челендж</h3>
             <div className={styles.container}>
-                {result.map((challenge:ChallengeType) =>
+                {result &&result.map((challenge:ChallengeType) =>
                         <Link key={challenge.id}
                               className={styles.item}
                               href={`/track/${challenge.id}`}
@@ -28,23 +35,11 @@ export default async function Home() {
                             {challenge.title}
                         </Link>
                 )}
+                {result.length===0 && <p className={styles.message} >Ни одного челенджа еще нет :(</p>}
+                <Link className={styles.link} href={'/challenge'}>создать челендж</Link>
             </div>
 
         </>
     )
-  //   const router = useRouter()
-  //   const handleClickOnDay =  () => {
-  //       console.log('redirect')
-  //       router.push('/activity')
-  //   }
-  // return (
-  //   <div className={styles.container}>
-  //       <div className={styles.containerWeekdays}>
-  //           {weekDays.map((day, ind)=><div key={ind} className={styles.weekday}>{day}</div>)}
-  //       </div>
-  //       <div className={styles.containerDays}>
-  //           {days.map(day=><div key={day.id} className={styles.day}  onClick={()=>router.push('/activity')}>{day.date.getDate()}</div>)}
-  //       </div>
-  //   </div>
-  // )
+
 }
