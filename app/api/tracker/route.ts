@@ -3,20 +3,6 @@ import {NextResponse} from "next/server";
 import {cookies} from "next/headers";
 import {RequestCookie} from "next/dist/compiled/@edge-runtime/cookies";
 
-
-export async function GET(req:Request){
-    const {date} = await req.json()
-    const tracker = await prisma.tracker.findMany({where: {
-            date: date
-        },
-        include:{
-            user:true,
-            activity:true
-        }
-    });
-    return NextResponse.json({result: tracker});
-}
-
 export async function POST(req:Request){
     const {value} = cookies().get('user_id') as RequestCookie;
    // console.log('id', id)

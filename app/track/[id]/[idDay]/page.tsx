@@ -25,9 +25,11 @@ type TrackerType = {
 export default async function DayPage({params}: { params:{id:string, idDay:string} }){
     const host = headers().get("host");
     const protocol = process?.env.NODE_ENV==="development"?"http":"https"
-    let response = await fetch(`${protocol}://${host}/api/tracker`, {
+   //const body = {date:params.idDay}
+   // console.log('body', body)
+    let response = await fetch(`${protocol}://${host}/api/tracker/${params.idDay}`, {
         method: "GET",
-        body: JSON.stringify({date: params.idDay}),
+        //body: JSON.stringify(body),
         cache: "no-store" });
     const {result} = await response.json();
 

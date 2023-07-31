@@ -8,9 +8,9 @@ export default function Challenge(){
     const [finish, setFinish] = useState('')
     const createChallenge = async (e:FormEvent) => {
         e.preventDefault();
-        console.log('body', {
-            title, start,  finish
-        })
+        // console.log('body', {
+        //     title, start,  finish
+        // })
         const response = await fetch('/api/challenge', {
             method:'POST',
             body: JSON.stringify({
